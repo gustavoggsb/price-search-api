@@ -19,7 +19,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/user/findById/5f729b55ca6d1b2ab1755b85
+GET http://localhost:3000/products/findById/5f729b55ca6d1b2ab1755b85
 
 ###
 
