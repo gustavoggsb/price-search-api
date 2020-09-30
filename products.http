@@ -1,4 +1,7 @@
-POST http://localhost:3000/products/create 
+@baseUrl = http://localhost:3000
+
+# @name createProduct
+POST {{baseUrl}}/products/create 
 Content-Type: application/json
 
 {
@@ -8,7 +11,9 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3000/products/update/5f73a19404f73a15e6fae246
+
+@productId = {{createProduct.response.body._id}}
+PUT {{baseUrl}}/products/update/{{productId}}
 Content-Type: application/json
 
 {
@@ -19,8 +24,8 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/products/findById/5f729b55ca6d1b2ab1755b85
+GET {{baseUrl}}/products/findById/{{productId}}
 
 ###
 
-Delete http://localhost:3000/products/delete/5f739b9a27b1cc120712f99f 
+Delete {{baseUrl}}/products/delete/{{productId}}
