@@ -14,22 +14,22 @@ import {
 export class ProductsController {
   constructor(private service: ProductsService) {}
 
-  @Get('findById/:id')
+  @Get(':id')
   get(@Param() params) {
     return this.service.findById(params.id);
   }
 
-  @Post('create')
+  @Post()
   create(@Body() product: Product) {
     return this.service.create(product);
   }
 
-  @Put('update/:id')
+  @Put(':id')
   update(@Param() params, @Body() product: Product) {
     return this.service.update(params.id, product);
   }
 
-  @Delete('delete/:id')
+  @Delete(':id')
   remove(@Param() params) {
     return this.service.remove(params.id);
   }
