@@ -7,7 +7,7 @@ import { ConfigModule } from '@nestjs/config';
   imports: [
     ProductsModule,
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.DATABASE_URL, { useFindAndModify: false}),
+    MongooseModule.forRoot(process.env.DATABASE_URL || 'mongodb://localhost:27017', { useFindAndModify: false}),
   ],
   controllers: [],
   providers: [],
