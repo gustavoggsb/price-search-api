@@ -28,4 +28,4 @@ GET {{baseUrl}}/products/{{productId}}
 
 ###
 
-Delete {{baseUrl}}/products/{{productId}}
+DELETE {{baseUrl}}/products/{{productId}}
