@@ -1,7 +1,7 @@
 @baseUrl = http://localhost:3000
 
 # @name createProduct
-POST {{baseUrl}}/products/create 
+POST {{baseUrl}}/products 
 Content-Type: application/json
 
 {
@@ -13,7 +13,7 @@ Content-Type: application/json
 ###
 
 @productId = {{createProduct.response.body._id}}
-PUT {{baseUrl}}/products/update/{{productId}}
+PUT {{baseUrl}}/products/{{productId}}
 Content-Type: application/json
 
 {
@@ -24,8 +24,8 @@ Content-Type: application/json
 
 ###
 
-GET {{baseUrl}}/products/findById/{{productId}}
+GET {{baseUrl}}/products/{{productId}}
 
 ###
 
-Delete {{baseUrl}}/products/delete/{{productId}}
+DELETE {{baseUrl}}/products/{{productId}}
