@@ -17,9 +17,3 @@ export class Product {
 
 export const ProductSchema = SchemaFactory.createForClass(Product);
 
-export interface Product {
-  id: string;
-  name: string;
-  weight: number;
-  imageUrl: string;
-}
