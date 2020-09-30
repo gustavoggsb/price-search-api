@@ -1,0 +1,19 @@
+image: gitpod/workspace-mongodb
+
+tasks:
+  - name: MongoDB
+    command: mkdir -p /workspace/data && mongod --dbpath /workspace/data
+  - name: Opening Swagger UI
+    command: gp await-port 3000 && gp preview http://localhost:3000/api; exit
+  - init: npm install && npm run build
+    command: npm run start:dev
+
+ports:
+  - port: 27017
+    onOpen: ignore
+  - port: 3000
+    onOpen: ignore
+
+vscode:
+  extensions:
+    - humao.rest-client@0.24.2:tiNIwP71m33jcKqZcyO2EQ==
