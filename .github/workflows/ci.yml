@@ -13,7 +13,7 @@ jobs:
 
     services:
       mongodb:
-        image: mongo:3.4.23
+        image: mongo
         ports:
           - 27017:27017
 
