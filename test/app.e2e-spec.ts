@@ -2,10 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
-import { response } from 'express';
-import { async } from 'rxjs';
 
-describe('Products Controller (e2e)', async () => {
+describe('ProductsController (e2e)', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
