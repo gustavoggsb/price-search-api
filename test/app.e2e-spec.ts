@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
+const mongoose = require('mongoose');
 
 describe('ProductsController (e2e)', () => {
   let app: INestApplication;
@@ -68,4 +69,6 @@ describe('ProductsController (e2e)', () => {
       .delete(`/products/${productId}`)
       .expect(200);
   });
+
+  afterAll(() => mongoose.disconnect());
 });
