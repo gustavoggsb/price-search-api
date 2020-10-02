@@ -22,7 +22,7 @@ describe('ProductsController (e2e)', () => {
     imageUrl: 'http://image-1.jpg',
   };
 
-  const productNew = {
+  const newProduct = {
     name: 'Soda',
     weight: 2.75,
     imageUrl: 'http://image-2.jpg',
@@ -51,17 +51,19 @@ describe('ProductsController (e2e)', () => {
     expect(res.body.name).toEqual(product.name);
     expect(res.body.weight).toEqual(product.weight);
     expect(res.body.imageUrl).toEqual(product.imageUrl);
+    expect(res.body._id).toEqual(productId);
   });
 
   it('PUT /product/:id', async () => {
     const res = await request(app.getHttpServer())
       .put(`/products/${productId}`)
-      .send(productNew)
+      .send(newProduct)
       .expect(200);
 
-    expect(res.body.name).toEqual(productNew.name);
-    expect(res.body.weight).toEqual(productNew.weight);
-    expect(res.body.imageUrl).toEqual(productNew.imageUrl);
+    expect(res.body.name).toEqual(newProduct.name);
+    expect(res.body.weight).toEqual(newProduct.weight);
+    expect(res.body.imageUrl).toEqual(newProduct.imageUrl);
+    expect(res.body._id).toEqual(productId);
   });
 
   it('DELETE /product/:id', async () => {
