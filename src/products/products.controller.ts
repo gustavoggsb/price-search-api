@@ -26,7 +26,8 @@ export class ProductsController {
 
   @Put(':id')
   update(@Param() params, @Body() product: Product) {
-    return this.service.update(params.id, product);
+    this.service.update(params.id, product);
+    return this.service.findById(params.id);
   }
 
   @Delete(':id')
