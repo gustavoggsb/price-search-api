@@ -21,6 +21,9 @@ Content-Type: application/json
     "weight": 3.5,
     "imageUrl":"https://static.carrefour.com.br/medias/sys_master/images/images/hb1/h91/h00/h00/26979835445278.jpg"
 }
+###
+
+GET {{baseUrl}}/products
 
 ###
 

@@ -14,6 +14,11 @@ import {
 export class ProductsController {
   constructor(private service: ProductsService) {}
 
+  @Get()
+  getAll() {
+    return this.service.findAll();
+  }
+
   @Get(':id')
   get(@Param() params) {
     return this.service.findById(params.id);

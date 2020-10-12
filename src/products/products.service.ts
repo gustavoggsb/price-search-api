@@ -14,13 +14,18 @@ export class ProductsService {
     return result;
   }
 
+  async findAll() {
+    const result = await this.productModel.find();
+    return result;
+  }
+
   async findById(id: number) {
     const result = await this.productModel.findById(id);
     return result;
   }
 
   async update(id: number, doc: Product) {
-    const result = await this.productModel.findByIdAndUpdate(id, doc)
+    const result = await this.productModel.findByIdAndUpdate(id, doc);
     return result;
   }
 
