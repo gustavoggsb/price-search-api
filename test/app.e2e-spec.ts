@@ -43,7 +43,19 @@ describe('ProductsController (e2e)', () => {
     productId = res.body._id;
   });
 
-  it('GET /product/:id', async () => {
+  it('GET /products', async () => {
+    const res = await request(app.getHttpServer())
+      .get(`/products`)
+      .expect(200);
+    
+    expect(res.body[0].name).toEqual(product.name);
+    expect(res.body[0].weight).toEqual(product.weight);
+    expect(res.body[0].imageUrl).toEqual(product.imageUrl);
+    expect(res.body[0]._id).toEqual(productId);
+    expect(res.body).toHaveLength(1)
+  });
+
+  it('GET /products/:id', async () => {
     const res = await request(app.getHttpServer())
       .get(`/products/${productId}`)
       .expect(200);
@@ -54,7 +66,7 @@ describe('ProductsController (e2e)', () => {
     expect(res.body._id).toEqual(productId);
   });
 
-  it('PUT /product/:id', async () => {
+  it('PUT /products/:id', async () => {
     const res = await request(app.getHttpServer())
       .put(`/products/${productId}`)
       .send(newProduct)
@@ -66,7 +78,7 @@ describe('ProductsController (e2e)', () => {
     expect(res.body._id).toEqual(productId);
   });
 
-  it('DELETE /product/:id', async () => {
+  it('DELETE /products/:id', async () => {
     await request(app.getHttpServer())
       .delete(`/products/${productId}`)
       .expect(200);
