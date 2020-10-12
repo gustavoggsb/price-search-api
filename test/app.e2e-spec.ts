@@ -47,7 +47,6 @@ describe('ProductsController (e2e)', () => {
     const res = await request(app.getHttpServer())
       .get(`/products`)
       .expect(200);
-    console.log(res.body)
     
     expect(res.body[0].name).toEqual(product.name);
     expect(res.body[0].weight).toEqual(product.weight);
