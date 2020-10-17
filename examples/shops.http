@@ -1,0 +1,40 @@
+@baseUrl = http://localhost:3000
+
+# @name createShop
+POST {{baseUrl}}/shops
+Content-Type: application/json
+
+{
+    "name":"Shop",
+    "location": {
+        "latitude": -22.2546,
+        "longitude": -44.32562
+    },
+    "imageUrl":"https://shopImage.jpg"
+}
+
+###
+
+@shopId = {{createShop.response.body._id}}
+PUT {{baseUrl}}/shops/{{shopId}}
+Content-Type: application/json
+
+{
+    "name":"New Shop",
+    "location": {
+        "latitude": -23.25445,
+        "longitude": -45.2645
+    },
+    "imageUrl":"https://newShopImage.jpg"
+}
+###
+
+GET {{baseUrl}}/shops
+
+###
+
+GET {{baseUrl}}/shops/{{shopId}}
+
+###
+
+DELETE {{baseUrl}}/shops/{{shopId}}

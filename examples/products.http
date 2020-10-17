@@ -5,9 +5,9 @@ POST {{baseUrl}}/products
 Content-Type: application/json
 
 {
-    "name":"Nescal",
+    "name":"Product",
     "weight": 1,
-    "imageUrl":"https://static.carrefour.com.br/medias/sys_master/images/images/hb1/h91/h00/h00/26979835445278.jpg"
+    "imageUrl":"https://productImage.jpg"
 }
 
 ###
@@ -17,9 +17,9 @@ PUT {{baseUrl}}/products/{{productId}}
 Content-Type: application/json
 
 {
-    "name":"Nescal 3.0",
+    "name":"New Product",
     "weight": 3.5,
-    "imageUrl":"https://static.carrefour.com.br/medias/sys_master/images/images/hb1/h91/h00/h00/26979835445278.jpg"
+    "imageUrl":"https://newProductImage.jpg"
 }
 ###
 
