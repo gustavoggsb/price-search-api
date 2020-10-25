@@ -1,0 +1,34 @@
+@baseUrl = http://localhost:3000
+
+# @name createUser
+POST {{baseUrl}}/users 
+Content-Type: application/json
+
+{
+    "name":"User",
+    "email": "user@example.com",
+    "password":"123"
+}
+
+###
+
+@userId = {{createUser.response.body._id}}
+PUT {{baseUrl}}/users/{{userId}}
+Content-Type: application/json
+
+{
+    "name":"New User",
+    "email": "newuser@example.com",
+    "password":"321"
+}
+###
+
+GET {{baseUrl}}/users
+
+###
+
+GET {{baseUrl}}/users/{{userId}}
+
+###
+
+DELETE {{baseUrl}}/users/{{userId}}
