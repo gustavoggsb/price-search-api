@@ -15,7 +15,8 @@
     "github.vscode-pull-request-github",
     "mhutchie.git-graph",
     "eamodio.gitlens",
-    "visualstudioexptteam.vscodeintellicode"
+    "visualstudioexptteam.vscodeintellicode",
+    "humao.rest-client"
   ],
   "postCreateCommand": "npm install",
   "remoteUser": "vscode"
