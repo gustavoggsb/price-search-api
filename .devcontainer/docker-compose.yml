@@ -1,0 +1,19 @@
+version: '3'
+services:
+  ubuntu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ..:/workspace/price-search-api:cached
+        # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+    environment: 
+      - DATABASE_URL= 'mongodb://mongo:27017'
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - 27017:27017

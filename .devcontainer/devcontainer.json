@@ -1,0 +1,22 @@
+// Reference: https://aka.ms/vscode-remote/devcontainer.json
+{
+  "name": "Ubuntu + Mongo",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "ubuntu",
+  "workspaceFolder": "/workspace/price-search-api",
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/zsh"
+  },
+  "extensions": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "eg2.vscode-npm-script",
+    "ashinzekene.nestjs",
+    "github.vscode-pull-request-github",
+    "mhutchie.git-graph",
+    "eamodio.gitlens",
+    "visualstudioexptteam.vscodeintellicode"
+  ],
+  "postCreateCommand": "npm install",
+  "remoteUser": "vscode"
+}
