@@ -1,6 +1,6 @@
 // Reference: https://aka.ms/vscode-remote/devcontainer.json
 {
-  "name": "Ubuntu + Mongo",
+  "name": "Price Search API",
   "dockerComposeFile": "docker-compose.yml",
   "service": "ubuntu",
   "workspaceFolder": "/workspace/price-search-api",

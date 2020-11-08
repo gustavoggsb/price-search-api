@@ -1,30 +1,25 @@
-FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu20.04
+# Note: You can use any Debian/Ubuntu based image you want.
+FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu
 
-SHELL [ "bash", "-euxo", "pipefail", "-c" ]
+# script-library options
+ARG SCRIPT_LIBRARY_COMMIT=master
 
-# Fix 'sudo: setrlimit(RLIMIT_CORE): Operation not permitted'
-# See https://github.com/sudo-project/sudo/issues/42#issuecomment-609079906
-RUN echo "Set disable_coredump false" >> /etc/sudo.conf
+# script-library's node options
+ENV NVM_DIR="/usr/local/share/nvm"
+ENV NVM_SYMLINK_CURRENT=true \
+  PATH=${NVM_DIR}/current/bin:${PATH}
 
-USER vscode
+# Install stuff using script-library's scripts
+RUN SCRIPT_LIBRARY_URL=https://raw.githubusercontent.com/microsoft/vscode-dev-containers/${SCRIPT_LIBRARY_COMMIT}/script-library \
+  # Install node
+  && bash -c "$(curl -fsSL "$SCRIPT_LIBRARY_URL/node-debian.sh")" -- "${NVM_DIR}" \
+  # Install docker
+  && bash -c "$(curl -fsSL "$SCRIPT_LIBRARY_URL/docker-debian.sh")" \
+  # Clean up
+  && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts/
 
-WORKDIR /home/vscode
+# script-library's docker options
+ENTRYPOINT [ "/usr/local/share/docker-init.sh" ]
+CMD [ "sleep", "infinity" ]
 
-# Install GitHub CLI
-RUN DEB_URL=$(curl -fsSL https://api.github.com/repos/cli/cli/releases/latest | jq -er '.assets[].browser_download_url | select(. | contains("linux_amd64.deb"))'); \
-   DEB_FILE=gh_latest.deb; \
-   curl -fsSLo $DEB_FILE $DEB_URL; \
-   sudo DEBIAN_FRONTEND=noninteractive apt-get install -y ./$DEB_FILE; \
-   rm -f $DEB_FILE; \
-   gh --version; \
-   #
-   sudo rm -rf /var/lib/apt/lists/*
-
-# Install Node.JS 12
-RUN export DEBIAN_FRONTEND=noninteractive; \
-   curl -fsSL https://deb.nodesource.com/setup_12.x | sudo -E bash; \
-   sudo -E apt-get install -y nodejs; \
-   #
-   sudo rm -rf /var/lib/apt/lists/*
-
-RUN sudo npm install -g @nestjs/cli commitizen heroku
+RUN npm install -g commitizen
