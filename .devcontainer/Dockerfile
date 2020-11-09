@@ -13,13 +13,5 @@ ENV NVM_SYMLINK_CURRENT=true \
 RUN SCRIPT_LIBRARY_URL=https://raw.githubusercontent.com/microsoft/vscode-dev-containers/${SCRIPT_LIBRARY_COMMIT}/script-library \
   # Install node
   && bash -c "$(curl -fsSL "$SCRIPT_LIBRARY_URL/node-debian.sh")" -- "${NVM_DIR}" \
-  # Install docker
-  && bash -c "$(curl -fsSL "$SCRIPT_LIBRARY_URL/docker-debian.sh")" \
   # Clean up
   && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts/
-
-# script-library's docker options
-ENTRYPOINT [ "/usr/local/share/docker-init.sh" ]
-CMD [ "sleep", "infinity" ]
-
-RUN npm install -g commitizen

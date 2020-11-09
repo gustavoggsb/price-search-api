@@ -1,11 +1,11 @@
 version: '3'
 services:
-  ubuntu:
+  price-search-api:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - 3000
     volumes:
       - ..:/workspace/price-search-api:cached
         # Overrides default command so things don't shut down after the process ends.
@@ -14,6 +14,6 @@ services:
       - DATABASE_URL= 'mongodb://mongo:27017'
 
   mongo:
-    image: mongo:latest
+    image: mongo
     ports:
-      - 27017:27017
+      - 27017

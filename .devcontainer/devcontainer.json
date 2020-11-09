@@ -2,7 +2,7 @@
 {
   "name": "Price Search API",
   "dockerComposeFile": "docker-compose.yml",
-  "service": "ubuntu",
+  "service": "price-search-api",
   "workspaceFolder": "/workspace/price-search-api",
   "settings": {
     "terminal.integrated.shell.linux": "/bin/zsh"
